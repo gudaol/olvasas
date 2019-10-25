@@ -8,8 +8,6 @@ namespace olvasas
     class Program
     {
 
-
-
         static string szotagol(string szo)
         {
             //System.Console.WriteLine(szo);
@@ -35,7 +33,7 @@ namespace olvasas
                     }
                     else
                     {
-                        ret += szo[(magindex[i] + 1)..(magindex[i + 1] - 1)] + "-" + szo[magindex[i + 1] - 1];
+                        ret += szo[(magindex[i] + 1)..(magindex[i + 1])] + "-" + szo[magindex[i + 1] - 1];
                     }
                 }
                 ret += szo.Substring(magindex[magindex.Count - 1]);
@@ -46,6 +44,11 @@ namespace olvasas
 
         static void Main(string[] args)
         {
+
+            foreach (var szo in DB.Csunya)
+            {
+                DB.Szavak.RemoveAll(p => p == szo);
+            }
             try
             {
                 Console.WriteLine("Add meg a betűket amik szerepeljenek a szavakban, majd nyomj entert (pl.: aerthv[ENTER])!");
@@ -58,7 +61,7 @@ namespace olvasas
                 using (var o = new StreamWriter(new FileStream("szavak.txt", FileMode.Create, FileAccess.Write, FileShare.Read)))
                     foreach (var szo in szurtSzavak)
                     {
-                        string v = szotagol(szo) + ' ';
+                        string v = szo + " :: " + szotagol(szo) + ' ';
                         System.Console.Write(v);
                         o.Write(v.AsSpan());
                         if ((i++ % 10) == 9)
