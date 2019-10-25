@@ -24,20 +24,23 @@ namespace olvasas
             }
             if (magindex.Count > 1)
             {
+                System.Console.WriteLine(ret);
                 ret = szo[0..(magindex[0] + 1)];
                 for (int i = 0; i < magindex.Count - 1; i++)
                 {
                     if (magindex[i] + 1 == magindex[i + 1])
                     {
-                        ret += szo[(magindex[i] + 1)..(magindex[i + 1])] + "-";
+                        ret += szo[(magindex[i] + 1)..(magindex[i + 1])] + "-" + szo[magindex[i + 1]];
+                        System.Console.WriteLine(ret);
                     }
                     else
                     {
-                        ret += szo[(magindex[i] + 1)..(magindex[i + 1])] + "-" + szo[magindex[i + 1] - 1];
+                        ret += szo[(magindex[i] + 1)..(magindex[i + 1] - 1)] + "-" + szo[magindex[i + 1] - 1];
+                        System.Console.WriteLine(ret);
                     }
                 }
                 ret += szo.Substring(magindex[magindex.Count - 1]);
-                //System.Console.WriteLine(ret);
+                System.Console.WriteLine(ret);
             }
             return ret;
         }
