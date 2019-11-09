@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace olvasas
+namespace OlvasasGyakorlo.Models
 {
     public class DB
     {
